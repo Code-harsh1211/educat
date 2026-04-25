@@ -20,14 +20,15 @@ const announcementRoutes = require('./routes/announcements');
 const app = express();
 
 // Middleware
+const cors = require("cors");
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://educat-neon.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: true,
+  credentials: true,
 }));
+
+// IMPORTANT: handle preflight requests
+app.options("*", cors());
 
 
 app.use(express.json({ limit: '50mb' }));
