@@ -1,7 +1,6 @@
 require('dotenv').config({ path: require('path').resolve(__dirname, '.env') });
 console.log("ENV FILE LOADED:", process.env.JWT_SECRET);
 const express = require('express');
-const cors = require("cors");
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -27,11 +26,13 @@ app.use(cors({
     "http://localhost:5173",
     "http://localhost:5174",
     "https://educat-git-main-edu-flow.vercel.app",
-    /\.vercel\.app$/ // allow all vercel previews
+    /\.vercel\.app$/ // allow all preview links
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
+app.options("*", cors());
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
