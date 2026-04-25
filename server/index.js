@@ -23,8 +23,9 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://educat-neon.vercel.app" // replace after deploy
+    "https://educat-neon.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
