@@ -22,14 +22,15 @@ const app = express();
 // Middleware
 const cors = require("cors");
 
-const cors = require("cors");
-
 app.use(cors({
-  origin: "*",   // allow all (for now)
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://educat-git-main-edu-flow.vercel.app",
+    /\.vercel\.app$/ // allow all vercel previews
+  ],
+  credentials: true
 }));
-
-app.options("*", cors());
 
 
 app.use(express.json({ limit: '50mb' }));
