@@ -21,8 +21,10 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: [
+    "http://localhost:5173",
+    "https://educat-neon.vercel.app" // replace after deploy
+  ],
   credentials: true
 }));
 
@@ -45,8 +47,8 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/announcements', announcementRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'EduFlow API is running', timestamp: new Date() });
+app.get('/', (req, res) => {
+  res.send('EduFlow API is running 🚀');
 });
 
 // Global error handler
