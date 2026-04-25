@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://educat-c1sz.onrender.com/api',
+  baseURL: 'https://educat-1-jmer.onrender.com/api',
   timeout: 30000,
 });
 
