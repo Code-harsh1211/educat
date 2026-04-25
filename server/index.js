@@ -22,12 +22,13 @@ const app = express();
 // Middleware
 const cors = require("cors");
 
+const cors = require("cors");
+
 app.use(cors({
-  origin: true,
-  credentials: true,
+  origin: "*",   // allow all (for now)
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
-// IMPORTANT: handle preflight requests
 app.options("*", cors());
 
 
